@@ -1,11 +1,30 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const pool = require('./config/database');
+const cors = require('cors');
 
-app.get('/',(req,res)=>{
-    res.status(200).json({message: 'good'})
-})
+//Routes
+const serverRoute = require('./routes/index');
+const authRoute = require('./routes/auth');
+
+//Pre server configurations
+app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true
+}));
+
+app.use((req, res, next) => {
+  res.removeHeader('Cross-Origin-Opener-Policy'); // or don't set it at all
+  next();
+});
+
+//mounting routes
+app.use('/',serverRoute);
+app.use('/google/auth',authRoute);
+
 
 app.listen(PORT,()=>{
-    console.log(`server is running on port ${PORT}`);
+    console.log(`server is running on porrt ${PORT}`);
 })
