@@ -25,6 +25,8 @@ app.use('/',serverRoute);
 app.use('/auth',authRoute);
 
 
-app.listen(PORT,()=>{
-    console.log(`server is running on porrt ${PORT}`);
-})
+// app.listen(PORT,()=>{
+//     console.log(`server is running on porrt ${PORT}`);
+// })
+
+module.exports = app;
