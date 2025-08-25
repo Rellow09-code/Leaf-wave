@@ -1,20 +1,41 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LogOut from "./components/LogOut";
 
 export default function Home(){
-    let [signIn,setSignIn] = useState(false);
-    const navigate = useNavigate();
+    //get the user data
+    const [user,setUser] = useState(localStorage.getItem('id'));
 
+    //redirect unsigned users
+    const navigate = useNavigate()
     useEffect(()=>{
-        if (signIn){
-            navigate('/signIn');
+        if (!user){
+            navigate('/SignIn');
         }
-    },[navigate,signIn])
+    },[navigate,user]);
+
+    //abstract logout
+    const handleLogOut = ()=>{
+        LogOut();
+        setUser(null);
+    }
     
     return(
         <>
-            <h1>Welcome to the homePage</h1>
-            <button onClick={()=>setSignIn(true)}>Sign up</button>
+            <header>
+                <input></input>
+                <button onClick={handleLogOut}>Log out</button>
+            </header>
+            <main>
+                <nav>
+                    <button>Home</button>
+                    <button>Friends</button>
+                    <button>chats</button>
+                </nav>
+                <section>
+                    
+                </section>
+            </main>
         </>
     )
 }
