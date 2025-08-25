@@ -1,18 +1,23 @@
 class errorHandler{
     static errorRes(message,res) {
-        res.status(400).json({response:message})
+        console.log(message);
+        res.status(400).json({message:message});
     }
     static serverError(res){
-        res.status(500).json({response:'Internal server error'})
+        console.log('Internal server error');
+        res.status(500).json({message:'Internal server error'});
     }
     static insufficientInfo(res){
-        res.status(400).json({response:'Insufficient info provided by client'})
+        console.log('Insufficient info provided by client');
+        res.status(400).json({message:'Insufficient info provided by client'});
     }
     static userNotFound(res){
-        res.status(400).json({response:'User does not exist'})
+        console.log('User does not exist');
+        res.status(400).json({message:'User does not exist'});
     }
     static Token(res){
-        res.status(400).json({response:'Invalid token'})
+        console.log('Invalid token');
+        res.status(400).json({message:'Invalid token'});
     }
 }
 

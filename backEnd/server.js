@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 
 //mounting routes
 app.use('/',serverRoute);
-app.use('/google/auth',authRoute);
+app.use('/auth',authRoute);
 
 
 app.listen(PORT,()=>{

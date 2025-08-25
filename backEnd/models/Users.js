@@ -18,6 +18,14 @@ const Users = sequelize.define('Users', {
     type: DataTypes.STRING,
     allowNull:true
   },
+  H_email:{
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  H_password:{
+    type: DataTypes.STRING,
+    allowNull: true
+  },
  
   is_active: {
     type: DataTypes.BOOLEAN,
